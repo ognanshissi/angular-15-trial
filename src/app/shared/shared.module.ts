@@ -1,8 +1,13 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {RouterModule} from "@angular/router";
+import {TitleComponent} from "@ui/title";
+import {HttpClientModule} from "@angular/common/http";
 
 const MODULES = [
-  CommonModule
+  CommonModule,
+  RouterModule,
+  TitleComponent
 ];
 
 @NgModule({

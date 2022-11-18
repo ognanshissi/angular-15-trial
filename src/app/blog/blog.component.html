@@ -1,0 +1,12 @@
+<div>
+  <app-title>Recent blog posts</app-title>
+
+  <div class="grid grid-cols-4 gap-3 mt-8">
+    <div *ngFor="let post of posts$ | async" class="p-4 rounded-lg shadow hover:shadow-lg hover:cursor-pointer border border-gray-300 ">
+      <div class="text-teal-700 hover:underline text-4xl pb-4 font-semibold">{{ post.title }} &rarr;</div>
+      <div>
+        {{ post.body }}
+      </div>
+    </div>
+  </div>
+</div>

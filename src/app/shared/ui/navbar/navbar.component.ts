@@ -1,17 +1,24 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {SharedModule} from "../../shared.module";
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [SharedModule],
+  styles: [
+    `
+      .activated-route {
+        @apply underline cursor-pointer;
+      }
+    `
+  ],
   template: `
     <div class="bg-black">
-      <div class="container mx-auto flex justify-between">
+      <div class="container mx-auto flex justify-between py-4 text-white">
         <div class="">Logo</div>
-        <div class="flex justify-between">
-          <span>Blog</span>
-          <span>About</span>
+        <div class="flex justify-between space-x-2">
+          <span class="hover:cursor-pointer hover:underline" [routerLink]="['/']" [routerLinkActive]="'activated-route'" [routerLinkActiveOptions]="{exact: true}">Blog</span>
+          <span  class="hover:cursor-pointer hover:underline" [routerLink]="['/about']" [routerLinkActive]="'activated-route'">About</span>
         </div>
       </div>
     </div>
