@@ -9,6 +9,4 @@ import { Component } from '@angular/core';
     </h1>
   `
 })
-export class TitleComponent {
-
-}
+export class TitleComponent {}

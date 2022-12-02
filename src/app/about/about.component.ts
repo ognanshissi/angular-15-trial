@@ -12,3 +12,5 @@ import {RouterModule} from "@angular/router";
 export class AboutComponent {
 
 }
+
+export default AboutComponent;

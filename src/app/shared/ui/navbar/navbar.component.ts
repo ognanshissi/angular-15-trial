@@ -15,7 +15,7 @@ import {SharedModule} from "../../shared.module";
   template: `
     <div class="bg-black">
       <div class="container mx-auto flex justify-between py-4 text-white">
-        <div class="">Logo</div>
+        <div class="">Angular Demo App</div>
         <div class="flex justify-between space-x-2">
           <span class="hover:cursor-pointer hover:underline" [routerLink]="['/']" [routerLinkActive]="'activated-route'" [routerLinkActiveOptions]="{exact: true}">Blog</span>
           <span  class="hover:cursor-pointer hover:underline" [routerLink]="['/about']" [routerLinkActive]="'activated-route'">About</span>

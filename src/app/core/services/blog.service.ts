@@ -1,6 +1,6 @@
 import {Inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, shareReplay} from "rxjs";
 import {PostResponse} from "@core/models";
 
 @Injectable({
@@ -15,6 +15,14 @@ export class BlogService {
   }
 
   getLatestPost(): Observable<PostResponse[]> {
-    return this._http.get<PostResponse[]>(`${this._apiUrl}posts?_limit=8`)
+    return this._http.get<PostResponse[]>(`${this._apiUrl}posts?_limit=8`).pipe(
+      shareReplay()
+    )
+  }
+
+  getPostDetails(id: string): Observable<PostResponse> {
+    return this._http.get<PostResponse>(`${this._apiUrl}posts/${id}`).pipe(
+      shareReplay()
+    )
   }
 }
