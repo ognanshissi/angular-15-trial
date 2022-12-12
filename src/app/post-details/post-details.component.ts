@@ -4,12 +4,13 @@ import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "@core/services";
 import {map, Observable, switchMap} from "rxjs";
 import {PostResponse} from "@core/models";
-import {TitleComponent} from "@ui/title";
+import { TitleComponent } from "@ui/title";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-post-details',
   standalone: true,
-  imports: [CommonModule, TitleComponent],
+  imports: [CommonModule, TitleComponent, RouterModule],
   templateUrl: './post-details.component.html',
 })
 export class PostDetailsComponent implements OnInit {
