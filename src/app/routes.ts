@@ -22,6 +22,5 @@ export const ROUTES: Route[] = [
     path: 'protected',
     component: ProtectedComponent,
     canActivate: [() => inject(AuthService).isLoggedIn()]
-
   }
 ]
