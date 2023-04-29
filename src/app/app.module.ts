@@ -1,12 +1,12 @@
-import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { ROUTES, RouterModule } from "@angular/router";
 import { CoreModule } from "@core/core.module";
 import { ButtonComponent } from "@ui/button";
 import { NavbarComponent } from "@ui/navbar";
 import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { appRoutes } from "./routes";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
@@ -14,7 +14,6 @@ import { BrowserModule } from "@angular/platform-browser";
       RouterModule.forRoot(appRoutes),
       BrowserModule,
       SharedModule,
-      RouterModule,
       ButtonComponent,
       NavbarComponent,
       HttpClientModule,
