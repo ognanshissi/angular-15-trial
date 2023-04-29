@@ -5,7 +5,7 @@ import {AuthService} from "@core/services";
 import {ProtectedComponent} from "./protected/protected.component";
 import {PostDetailsComponent} from "./post-details/post-details.component";
 
-export const ROUTES: Route[] = [
+export const appRoutes: Route[] = [
   {
     path: '',
     component: BlogComponent,
