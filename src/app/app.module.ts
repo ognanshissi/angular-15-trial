@@ -11,8 +11,10 @@ import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
     imports: [
-      RouterModule.forRoot(appRoutes),
-      BrowserModule,
+      RouterModule.forRoot(appRoutes, {
+    initialNavigation: 'enabledBlocking'
+}),
+      BrowserModule.withServerTransition({ appId: 'serverApp' }),
       SharedModule,
       ButtonComponent,
       NavbarComponent,
