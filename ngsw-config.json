@@ -26,5 +26,31 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "posts",
+      "urls": [
+        "https://jsonplaceholder.typicode.com/posts?_limit=8"
+      ],
+      "cacheConfig": {
+        "maxAge": "1d",
+        "maxSize": 5,
+        "timeout": "10s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "posts",
+      "urls": [
+        "https://jsonplaceholder.typicode.com/posts/*"
+      ],
+      "cacheConfig": {
+        "maxAge": "11d",
+        "maxSize": 5,
+        "timeout": "10s",
+        "strategy": "freshness"
+      }
+    }
   ]
 }
