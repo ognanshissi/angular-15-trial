@@ -5,9 +5,10 @@ import { NavbarComponent } from "@ui/navbar";
 import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { appRoutes } from "./routes";
-import { NgModule } from "@angular/core";
+import { NgModule, isDevMode } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
     imports: [
@@ -19,7 +20,13 @@ import { BrowserModule } from "@angular/platform-browser";
       ButtonComponent,
       NavbarComponent,
       HttpClientModule,
-      CoreModule],
+      CoreModule,
+      ServiceWorkerModule.register('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        // Register the ServiceWorker as soon as the application is stable
+        // or after 30 seconds (whichever comes first).
+        registrationStrategy: 'registerWhenStable:30000'
+      })],
     providers: [ {
       provide: 'BACKEND_API', useValue: 'https://jsonplaceholder.typicode.com/'
     }],
