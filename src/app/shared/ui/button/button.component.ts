@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-button',
+  selector: 'button[mat-button]',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './button.component.html',
