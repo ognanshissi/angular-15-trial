@@ -11,7 +11,9 @@ export class AppComponent implements OnInit {
 
   private _swPush = inject(SwPush);
 
+
   ngOnInit() {
+
   }
 
   private subscribeToPush() {
