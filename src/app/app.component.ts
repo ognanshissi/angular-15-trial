@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {SwPush} from "@angular/service-worker";
 
 @Component({
@@ -6,15 +6,10 @@ import {SwPush} from "@angular/service-worker";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'angularNew';
 
   private _swPush = inject(SwPush);
-
-
-  ngOnInit() {
-
-  }
 
   private subscribeToPush() {
     this._swPush.requestSubscription({
