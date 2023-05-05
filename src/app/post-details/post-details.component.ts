@@ -1,32 +1,38 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "@core/services";
-import {map, Observable, switchMap} from "rxjs";
-import {PostResponse} from "@core/models";
+import {map, switchMap, tap} from "rxjs";
 import { TitleComponent } from "@ui/title";
 import { RouterModule } from '@angular/router';
+import {Meta, Title} from "@angular/platform-browser";
+import {AppShellRenderDirectives} from "../shared/directives/app-shell-render.directives";
+import {AppShellNoRenderDirectives} from "../shared/directives/app-shell-norender.directives";
+import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-post-details',
   standalone: true,
-  imports: [CommonModule, TitleComponent, RouterModule],
+  imports: [CommonModule, TitleComponent, RouterModule, AppShellRenderDirectives, AppShellNoRenderDirectives],
   templateUrl: './post-details.component.html',
 })
-export class PostDetailsComponent implements OnInit {
+export class PostDetailsComponent {
 
-  post$!: Observable<PostResponse>;
+  private _activatedRoute = inject(ActivatedRoute);
+  private _blogService = inject(BlogService);
 
-  constructor(
-    private _activatedRoute: ActivatedRoute,
-    private _blogService: BlogService
-  ) {
-  }
+  private _title = inject(Title);
+  private _meta = inject(Meta);
 
-  ngOnInit() {
-    this.post$ = this._activatedRoute.params.pipe(
-      map(params => params['id']),
-      switchMap(id => this._blogService.getPostDetails(id))
-    )
-  }
+  post = toSignal(this._activatedRoute.params.pipe(
+    map(params => params['id']),
+    switchMap(id => this._blogService.getPostDetails(id).pipe(
+      tap(post => {
+        console.log(post);
+        this._title.setTitle(post.title);
+        this._meta.updateTag({name: 'description', content: post.body})
+      })
+    ))
+  ));
+
 }
