@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-title',
+  selector: 'h1[mat-title]',
   standalone: true,
   template: `
-    <h1 class="text-6xl text-teal-700 font-bold border-b-8 border-b-teal-700 inline-block pb-4">
+    <span class="text-6xl text-teal-700 font-bold border-b-8 border-b-teal-700 inline-block pb-4">
       <ng-content></ng-content>
-    </h1>
+    </span>
   `
 })
 export class TitleComponent {}

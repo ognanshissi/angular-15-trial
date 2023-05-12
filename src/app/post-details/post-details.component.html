@@ -1,6 +1,6 @@
-<ng-container *appShellNoRender>
+<ng-container>
   <div class="container p-8" *ngIf="post()">
-    <app-title>{{ post()?.title }}</app-title>
+    <h1 mat-title>{{ post()?.title }}</h1>
 
     <p class="py-4 text-xl">
       {{ post()?.body }}

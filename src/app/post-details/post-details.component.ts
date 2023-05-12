@@ -28,8 +28,8 @@ export class PostDetailsComponent {
     map(params => params['id']),
     switchMap(id => this._blogService.getPostDetails(id).pipe(
       tap(post => {
-        console.log(post);
-        this._title.setTitle(post.title);
+        // Set header metadata for better SEO
+        this._title.setTitle(`Blog | ${post.title}`);
         this._meta.updateTag({name: 'description', content: post.body})
       })
     ))
